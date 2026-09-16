@@ -75,7 +75,12 @@ def _merge(known: dict | None, ai: dict) -> list[dict]:
     merged = []
     for k in known["ingredients"]:
         a = by_name.pop(k["name"], {})
-        merged.append({**k, "name_translated": a.get("name_translated"), "ratio_percent": a.get("ratio_percent")})
+        merged.append({
+            **k,
+            "name_translated": k.get("name_translated") or a.get("name_translated"),
+            # 메뉴젠은 실제 중량 기반 비율 → AI 추정치로 덮어쓰지 않음
+            "ratio_percent": k["ratio_percent"] if k.get("ratio_source") == "menuzen" else a.get("ratio_percent"),
+        })
     # DB에 없는 AI 추론 재료는 확정하지 않고 possible로만 반영
     for a in by_name.values():
         if a.get("name"):
@@ -84,6 +89,11 @@ def _merge(known: dict | None, ai: dict) -> list[dict]:
 
 
 def _normalize_ratios(ings: list[dict]) -> None:
+    if any(i.get("ratio_source") == "menuzen" for i in ings):
+        for i in ings:
+            if i.get("ratio_source") != "menuzen":
+                i["ratio_percent"] = None  # 실측 비율과 AI 추정치를 섞지 않음
+        return
     vals = [i for i in ings if isinstance(i.get("ratio_percent"), (int, float)) and i["ratio_percent"] > 0]
     total = sum(i["ratio_percent"] for i in vals)
     if total <= 0:
@@ -145,6 +155,8 @@ def analyze(menus, ocr_text: str | None, profile: DietProfile) -> list[dict]:
             "resolved_variant": known["resolved_variant"] if known else None,
             "variant_options": known["variant_options"] if known else [],
             "matched_menu_db": bool(known),
+            "data_source": known.get("data_source") if known else "ai",
+            "family": known.get("family", []) if known else [],
             "ingredients": ingredients,
             "custom_allergen_hits": hits,
             "risk": risk,

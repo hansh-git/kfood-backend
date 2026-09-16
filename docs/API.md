@@ -82,3 +82,13 @@ TTS는 프론트 `speechSynthesis` + `lang: 'ko-KR'` 사용.
 - `religious_diet`: `halal | kosher | hindu | none`
 - `vegetarian_type`: `vegan | vegetarian | lacto | ovo | pescatarian | none`
 - `preferred_language`: `ko | en | zh | ja`
+
+
+## 재료 데이터 소스 (우선순위)
+1. **메뉴젠** (농촌진흥청 국립식량과학원, 공공데이터포털) — `app/data/menuzen_menus.json`
+   - 같은 계열 레시피를 비교: 70% 이상에 있는 재료 → confirmed, 일부에만 있는 재료 → possible(직원 질문)
+   - `ratio_percent`는 실제 중량(g) 기반 (`ratio_source: "menuzen"`)
+   - 갱신: `.env`에 `MENUZEN_API_KEY` 입력 후 `python -m scripts.fetch_menuzen`
+2. **자체 메뉴 DB** `app/data/menu_base.json` — 메뉴젠에 없는 부산 향토음식 보완
+3. **AI 추론** — 둘 다 없을 때
+- 응답 `results[].data_source`: `menuzen` | `menu_base` | `ai`, `results[].family`: 비교에 쓴 레시피 이름

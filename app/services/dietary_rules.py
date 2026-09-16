@@ -200,6 +200,9 @@ def evaluate(menu_name: str, ingredients: list[dict], profile: DietProfile, menu
             variant_hit = True
         elif ing_forbidden_possible:
             contains_q.setdefault(name, []).extend(ing_forbidden_possible)  # 금지 여부 질문이 인증 질문보다 우선
+        elif ing_verify and certainty == "possible":
+            # 들어가는지부터 불확실 → '소고기가 들어가나요?' 먼저 (예 → 확정 후 인증 질문)
+            contains_q.setdefault(name, []).extend(ing_verify)
         elif ing_verify:
             verify_q.setdefault(name, []).extend(ing_verify)
 

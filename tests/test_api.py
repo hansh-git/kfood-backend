@@ -24,6 +24,8 @@ def fake_chat_json(model, messages, **kw):
 
 
 def test_analyze_and_confirm(monkeypatch):
+    from app.services import menuzen_knowledge
+    monkeypatch.setattr(menuzen_knowledge, "load_dishes", lambda *a, **k: [])  # 자체 메뉴 DB 경로 테스트
     monkeypatch.setattr(groq_service, "chat_json", fake_chat_json)
     body = {"menus": [{"name": "짬뽕", "price": "9000"}], "profile": {"allergies": {"새우": "심각"}, "preferred_language": "en"}}
     r = client.post("/analyze", json=body)
@@ -37,13 +39,19 @@ def test_analyze_and_confirm(monkeypatch):
     assert ai_extra["certainty"] == "possible" and ai_extra["tags"] == []
 
     q = item["risk"]["staff_questions"][0]
+    assert q["kind"] == "variant"
     r2 = client.post("/qna/confirm", json={
-        "menu_result": item, "question": {"ingredient": q["ingredient"], "tag": q["tag"], "kind": q["kind"]},
-        "staff_answer": "새우는 안 들어가요", "profile": body["profile"],
+        "menu_result": item, "question": q, "staff_answer": "고기짬뽕이에요", "profile": body["profile"],
     })
     assert r2.status_code == 200, r2.text
-    assert r2.json()["verdict"] == "no"
-    assert r2.json()["result"]["risk"]["level"] == "SAFE"
+    res = r2.json()["result"]
+    assert r2.json()["verdict"] == "고기짬뽕" and res["resolved_variant"] == "고기짬뽕"
+    assert res["risk"]["level"] == "SAFE"  # 새우 제외됨
+
+    r3 = client.post("/qna/confirm", json={
+        "menu_result": item, "question": q, "staff_answer": "해물짬뽕", "profile": body["profile"],
+    })
+    assert r3.json()["result"]["risk"]["level"] == "WARNING"
 
 
 def test_card_preview():
@@ -78,3 +86,18 @@ def test_ocr_compresses_large_image(monkeypatch):
     assert r.status_code == 200, r.text
     assert r.json()["menus"][0]["name"] == "짬뽕"
     assert seen["b64_len"] < 4 * 1024 * 1024
+
+
+def test_analyze_uses_menuzen_ratio(monkeypatch):
+    from app.services import menuzen_knowledge
+    from tests.menuzen_fixture import DISHES
+    monkeypatch.setattr(menuzen_knowledge, "load_dishes", lambda *a, **k: DISHES)
+    monkeypatch.setattr(groq_service, "chat_json", fake_chat_json)
+    r = client.post("/analyze", json={"menus": [{"name": "짬뽕"}], "profile": {"allergies": {"새우": "심각"}}})
+    item = r.json()["results"][0]
+    assert item["data_source"] == "menuzen" and "해물짬뽕" in item["family"]
+    noodle = next(i for i in item["ingredients"] if i["name"] == "우동면")
+    assert noodle["ratio_source"] == "menuzen"
+    ai_extra = next(i for i in item["ingredients"] if i["name"] == "고추기름")
+    assert ai_extra["ratio_percent"] is None  # AI 추정치와 섞지 않음
+    assert item["risk"]["level"] == "CAUTION"

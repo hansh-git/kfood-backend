@@ -44,6 +44,19 @@ def match_menu(menu_name: str) -> tuple[str, dict] | None:
 
 
 def build_known_ingredients(menu_name: str) -> dict | None:
+    """1순위 메뉴젠(공공데이터) → 2순위 자체 메뉴 DB(menu_base.json)."""
+    from app.services.menuzen_knowledge import build_from_menuzen
+
+    found = build_from_menuzen(menu_name)
+    if found:
+        return found
+    local = build_from_local(menu_name)
+    if local:
+        local["data_source"] = "menu_base"
+    return local
+
+
+def build_from_local(menu_name: str) -> dict | None:
     """메뉴명으로 DB 재료 목록을 만든다.
 
     - required → certainty=confirmed
