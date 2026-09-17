@@ -1,0 +1,1402 @@
+{
+ "_comment": "초기 시드 데이터 — 팀 검수 필요. required=거의 모든 가게에 들어가는 필수 재료, hidden=가게마다 다를 수 있는 재료, variants=메뉴명 키워드로 구분되는 변형",
+ "menus": {
+  "돼지국밥": {
+   "aliases": [
+    "국밥"
+   ],
+   "category": "국밥",
+   "required": [
+    {
+     "name": "돼지고기",
+     "tags": [
+      "pork"
+     ]
+    },
+    {
+     "name": "돼지뼈 육수",
+     "tags": [
+      "pork"
+     ]
+    },
+    {
+     "name": "밥",
+     "tags": []
+    }
+   ],
+   "hidden": [
+    {
+     "name": "새우젓",
+     "tags": [
+      "shrimp"
+     ]
+    },
+    {
+     "name": "부추",
+     "tags": []
+    }
+   ],
+   "variants": [
+    {
+     "name": "순대국밥",
+     "keywords": [
+      "순대"
+     ],
+     "ingredients": [
+      {
+       "name": "순대",
+       "tags": [
+        "pork"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "내장국밥",
+     "keywords": [
+      "내장"
+     ],
+     "ingredients": [
+      {
+       "name": "돼지 내장",
+       "tags": [
+        "pork"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "수육국밥",
+     "keywords": [
+      "수육"
+     ],
+     "ingredients": [
+      {
+       "name": "돼지 수육",
+       "tags": [
+        "pork"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "밀면": {
+   "aliases": [
+    "부산밀면"
+   ],
+   "category": "면",
+   "required": [
+    {
+     "name": "밀가루 면",
+     "tags": [
+      "wheat"
+     ]
+    },
+    {
+     "name": "식초",
+     "tags": []
+    }
+   ],
+   "hidden": [
+    {
+     "name": "소고기 또는 돼지뼈 육수",
+     "tags": [
+      "beef",
+      "pork"
+     ]
+    },
+    {
+     "name": "삶은 달걀",
+     "tags": [
+      "egg"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "name": "물밀면",
+     "keywords": [
+      "물"
+     ],
+     "ingredients": []
+    },
+    {
+     "name": "비빔밀면",
+     "keywords": [
+      "비빔"
+     ],
+     "ingredients": [
+      {
+       "name": "고추장 양념",
+       "tags": [
+        "wheat",
+        "soy"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "짬뽕": {
+   "aliases": [
+    "짬봉"
+   ],
+   "category": "중식",
+   "required": [
+    {
+     "name": "밀가루 면",
+     "tags": [
+      "wheat"
+     ]
+    },
+    {
+     "name": "양파",
+     "tags": []
+    },
+    {
+     "name": "양배추",
+     "tags": []
+    },
+    {
+     "name": "고춧가루",
+     "tags": []
+    }
+   ],
+   "hidden": [
+    {
+     "name": "굴소스",
+     "tags": [
+      "shellfish"
+     ]
+    },
+    {
+     "name": "돼지뼈·닭뼈 육수",
+     "tags": [
+      "pork",
+      "chicken"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "name": "해물짬뽕",
+     "keywords": [
+      "해물"
+     ],
+     "ingredients": [
+      {
+       "name": "오징어",
+       "tags": [
+        "squid"
+       ]
+      },
+      {
+       "name": "새우",
+       "tags": [
+        "shrimp"
+       ]
+      },
+      {
+       "name": "홍합",
+       "tags": [
+        "shellfish"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "고기짬뽕",
+     "keywords": [
+      "고기"
+     ],
+     "ingredients": [
+      {
+       "name": "돼지고기",
+       "tags": [
+        "pork"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "차돌짬뽕",
+     "keywords": [
+      "차돌"
+     ],
+     "ingredients": [
+      {
+       "name": "차돌박이",
+       "tags": [
+        "beef"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "짜장면": {
+   "aliases": [
+    "자장면",
+    "짜장"
+   ],
+   "category": "중식",
+   "required": [
+    {
+     "name": "밀가루 면",
+     "tags": [
+      "wheat"
+     ]
+    },
+    {
+     "name": "춘장",
+     "tags": [
+      "soy",
+      "wheat"
+     ]
+    },
+    {
+     "name": "돼지고기",
+     "tags": [
+      "pork"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "굴소스",
+     "tags": [
+      "shellfish"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "name": "해물짜장",
+     "keywords": [
+      "해물"
+     ],
+     "ingredients": [
+      {
+       "name": "오징어",
+       "tags": [
+        "squid"
+       ]
+      },
+      {
+       "name": "새우",
+       "tags": [
+        "shrimp"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "간짜장",
+     "keywords": [
+      "간짜장"
+     ],
+     "ingredients": []
+    }
+   ]
+  },
+  "어묵탕": {
+   "aliases": [
+    "부산어묵",
+    "어묵",
+    "오뎅",
+    "오뎅탕"
+   ],
+   "category": "분식",
+   "required": [
+    {
+     "name": "어묵",
+     "tags": [
+      "fish",
+      "wheat"
+     ]
+    },
+    {
+     "name": "멸치 육수",
+     "tags": [
+      "fish"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "간장",
+     "tags": [
+      "soy",
+      "wheat"
+     ]
+    },
+    {
+     "name": "새우 함유 어묵",
+     "tags": [
+      "shrimp"
+     ]
+    }
+   ],
+   "variants": []
+  },
+  "씨앗호떡": {
+   "aliases": [
+    "호떡"
+   ],
+   "category": "간식",
+   "required": [
+    {
+     "name": "밀가루 반죽",
+     "tags": [
+      "wheat"
+     ]
+    },
+    {
+     "name": "설탕",
+     "tags": []
+    }
+   ],
+   "hidden": [
+    {
+     "name": "땅콩",
+     "tags": [
+      "peanut"
+     ]
+    },
+    {
+     "name": "호두",
+     "tags": [
+      "walnut"
+     ]
+    },
+    {
+     "name": "우유 반죽",
+     "tags": [
+      "milk"
+     ]
+    },
+    {
+     "name": "식용유/마가린",
+     "tags": [
+      "milk"
+     ]
+    }
+   ],
+   "variants": []
+  },
+  "낙곱새": {
+   "aliases": [],
+   "category": "볶음/전골",
+   "required": [
+    {
+     "name": "낙지",
+     "tags": [
+      "mollusk"
+     ]
+    },
+    {
+     "name": "소곱창",
+     "tags": [
+      "beef"
+     ]
+    },
+    {
+     "name": "새우",
+     "tags": [
+      "shrimp"
+     ]
+    },
+    {
+     "name": "고추장 양념",
+     "tags": [
+      "wheat",
+      "soy"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "맛술",
+     "tags": [
+      "alcohol"
+     ]
+    },
+    {
+     "name": "멸치 육수",
+     "tags": [
+      "fish"
+     ]
+    }
+   ],
+   "variants": []
+  },
+  "동래파전": {
+   "aliases": [
+    "파전"
+   ],
+   "category": "전",
+   "required": [
+    {
+     "name": "쪽파",
+     "tags": []
+    },
+    {
+     "name": "밀가루·찹쌀가루 반죽",
+     "tags": [
+      "wheat"
+     ]
+    },
+    {
+     "name": "달걀",
+     "tags": [
+      "egg"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "조갯살·굴",
+     "tags": [
+      "shellfish"
+     ]
+    },
+    {
+     "name": "새우",
+     "tags": [
+      "shrimp"
+     ]
+    },
+    {
+     "name": "다진 소고기",
+     "tags": [
+      "beef"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "name": "해물파전",
+     "keywords": [
+      "해물"
+     ],
+     "ingredients": [
+      {
+       "name": "조갯살·굴",
+       "tags": [
+        "shellfish"
+       ]
+      },
+      {
+       "name": "새우",
+       "tags": [
+        "shrimp"
+       ]
+      },
+      {
+       "name": "오징어",
+       "tags": [
+        "squid"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "김치전",
+     "keywords": [
+      "김치"
+     ],
+     "ingredients": [
+      {
+       "name": "김치(젓갈·액젓)",
+       "tags": [
+        "fish"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "곰장어구이": {
+   "aliases": [
+    "꼼장어",
+    "꼼장어구이",
+    "곰장어"
+   ],
+   "category": "구이",
+   "required": [
+    {
+     "name": "먹장어(곰장어)",
+     "tags": [
+      "fish"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "고추장 양념",
+     "tags": [
+      "wheat",
+      "soy"
+     ]
+    },
+    {
+     "name": "맛술",
+     "tags": [
+      "alcohol"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "name": "소금구이",
+     "keywords": [
+      "소금"
+     ],
+     "ingredients": []
+    },
+    {
+     "name": "양념구이",
+     "keywords": [
+      "양념"
+     ],
+     "ingredients": [
+      {
+       "name": "고추장 양념",
+       "tags": [
+        "wheat",
+        "soy"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "조개구이": {
+   "aliases": [],
+   "category": "구이",
+   "required": [
+    {
+     "name": "조개류",
+     "tags": [
+      "shellfish"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "치즈",
+     "tags": [
+      "milk"
+     ]
+    },
+    {
+     "name": "버터",
+     "tags": [
+      "milk"
+     ]
+    },
+    {
+     "name": "새우",
+     "tags": [
+      "shrimp"
+     ]
+    }
+   ],
+   "variants": []
+  },
+  "비빔밥": {
+   "aliases": [],
+   "category": "밥",
+   "required": [
+    {
+     "name": "밥",
+     "tags": []
+    },
+    {
+     "name": "나물",
+     "tags": []
+    }
+   ],
+   "hidden": [
+    {
+     "name": "달걀",
+     "tags": [
+      "egg"
+     ]
+    },
+    {
+     "name": "소고기",
+     "tags": [
+      "beef"
+     ]
+    },
+    {
+     "name": "고추장",
+     "tags": [
+      "wheat",
+      "soy"
+     ]
+    },
+    {
+     "name": "참기름",
+     "tags": [
+      "sesame"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "name": "육회비빔밥",
+     "keywords": [
+      "육회"
+     ],
+     "ingredients": [
+      {
+       "name": "소고기 육회",
+       "tags": [
+        "beef"
+       ]
+      },
+      {
+       "name": "달걀 노른자",
+       "tags": [
+        "egg"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "돌솥비빔밥",
+     "keywords": [
+      "돌솥"
+     ],
+     "ingredients": []
+    }
+   ]
+  },
+  "김치찌개": {
+   "aliases": [],
+   "category": "찌개",
+   "required": [
+    {
+     "name": "김치(젓갈·액젓)",
+     "tags": [
+      "fish"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "새우젓",
+     "tags": [
+      "shrimp"
+     ]
+    },
+    {
+     "name": "두부",
+     "tags": [
+      "soy"
+     ]
+    },
+    {
+     "name": "멸치 육수",
+     "tags": [
+      "fish"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "name": "돼지고기 김치찌개",
+     "keywords": [
+      "돼지",
+      "고기"
+     ],
+     "ingredients": [
+      {
+       "name": "돼지고기",
+       "tags": [
+        "pork"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "참치 김치찌개",
+     "keywords": [
+      "참치"
+     ],
+     "ingredients": [
+      {
+       "name": "참치",
+       "tags": [
+        "fish"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "스팸 김치찌개",
+     "keywords": [
+      "스팸",
+      "햄"
+     ],
+     "ingredients": [
+      {
+       "name": "햄",
+       "tags": [
+        "pork"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "된장찌개": {
+   "aliases": [],
+   "category": "찌개",
+   "required": [
+    {
+     "name": "된장",
+     "tags": [
+      "soy"
+     ]
+    },
+    {
+     "name": "두부",
+     "tags": [
+      "soy"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "멸치 육수",
+     "tags": [
+      "fish"
+     ]
+    },
+    {
+     "name": "조개",
+     "tags": [
+      "shellfish"
+     ]
+    },
+    {
+     "name": "소고기",
+     "tags": [
+      "beef"
+     ]
+    },
+    {
+     "name": "돼지고기",
+     "tags": [
+      "pork"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "name": "차돌 된장찌개",
+     "keywords": [
+      "차돌"
+     ],
+     "ingredients": [
+      {
+       "name": "차돌박이",
+       "tags": [
+        "beef"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "해물 된장찌개",
+     "keywords": [
+      "해물"
+     ],
+     "ingredients": [
+      {
+       "name": "조개",
+       "tags": [
+        "shellfish"
+       ]
+      },
+      {
+       "name": "새우",
+       "tags": [
+        "shrimp"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "떡볶이": {
+   "aliases": [
+    "떡뽁이"
+   ],
+   "category": "분식",
+   "required": [
+    {
+     "name": "고추장",
+     "tags": [
+      "soy"
+     ]
+    },
+    {
+     "name": "어묵",
+     "tags": [
+      "fish",
+      "wheat"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "밀떡",
+     "tags": [
+      "wheat"
+     ]
+    },
+    {
+     "name": "멸치 육수",
+     "tags": [
+      "fish"
+     ]
+    },
+    {
+     "name": "삶은 달걀",
+     "tags": [
+      "egg"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "name": "치즈떡볶이",
+     "keywords": [
+      "치즈"
+     ],
+     "ingredients": [
+      {
+       "name": "치즈",
+       "tags": [
+        "milk"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "로제떡볶이",
+     "keywords": [
+      "로제"
+     ],
+     "ingredients": [
+      {
+       "name": "크림",
+       "tags": [
+        "milk"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "김밥": {
+   "aliases": [],
+   "category": "분식",
+   "required": [
+    {
+     "name": "김",
+     "tags": []
+    },
+    {
+     "name": "밥",
+     "tags": []
+    },
+    {
+     "name": "단무지",
+     "tags": []
+    }
+   ],
+   "hidden": [
+    {
+     "name": "햄",
+     "tags": [
+      "pork"
+     ]
+    },
+    {
+     "name": "달걀 지단",
+     "tags": [
+      "egg"
+     ]
+    },
+    {
+     "name": "게맛살",
+     "tags": [
+      "fish",
+      "crab"
+     ]
+    },
+    {
+     "name": "참기름",
+     "tags": [
+      "sesame"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "name": "참치김밥",
+     "keywords": [
+      "참치"
+     ],
+     "ingredients": [
+      {
+       "name": "참치",
+       "tags": [
+        "fish"
+       ]
+      },
+      {
+       "name": "마요네즈",
+       "tags": [
+        "egg"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "소고기김밥",
+     "keywords": [
+      "소고기",
+      "불고기"
+     ],
+     "ingredients": [
+      {
+       "name": "소고기",
+       "tags": [
+        "beef"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "치즈김밥",
+     "keywords": [
+      "치즈"
+     ],
+     "ingredients": [
+      {
+       "name": "치즈",
+       "tags": [
+        "milk"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "칼국수": {
+   "aliases": [],
+   "category": "면",
+   "required": [
+    {
+     "name": "밀가루 면",
+     "tags": [
+      "wheat"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "멸치 육수",
+     "tags": [
+      "fish"
+     ]
+    },
+    {
+     "name": "달걀",
+     "tags": [
+      "egg"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "name": "해물칼국수",
+     "keywords": [
+      "해물"
+     ],
+     "ingredients": [
+      {
+       "name": "바지락",
+       "tags": [
+        "shellfish"
+       ]
+      },
+      {
+       "name": "새우",
+       "tags": [
+        "shrimp"
+       ]
+      },
+      {
+       "name": "오징어",
+       "tags": [
+        "squid"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "바지락칼국수",
+     "keywords": [
+      "바지락"
+     ],
+     "ingredients": [
+      {
+       "name": "바지락",
+       "tags": [
+        "shellfish"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "닭칼국수",
+     "keywords": [
+      "닭"
+     ],
+     "ingredients": [
+      {
+       "name": "닭고기",
+       "tags": [
+        "chicken"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "물회": {
+   "aliases": [],
+   "category": "회",
+   "required": [
+    {
+     "name": "생선회",
+     "tags": [
+      "fish"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "오징어",
+     "tags": [
+      "squid"
+     ]
+    },
+    {
+     "name": "고추장 양념",
+     "tags": [
+      "wheat",
+      "soy"
+     ]
+    },
+    {
+     "name": "소면",
+     "tags": [
+      "wheat"
+     ]
+    }
+   ],
+   "variants": []
+  },
+  "복국": {
+   "aliases": [
+    "복어국",
+    "복지리"
+   ],
+   "category": "국",
+   "required": [
+    {
+     "name": "복어",
+     "tags": [
+      "fish"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "콩나물",
+     "tags": [
+      "soy"
+     ]
+    },
+    {
+     "name": "맛술",
+     "tags": [
+      "alcohol"
+     ]
+    }
+   ],
+   "variants": []
+  },
+  "아귀찜": {
+   "aliases": [
+    "아구찜"
+   ],
+   "category": "찜",
+   "required": [
+    {
+     "name": "아귀",
+     "tags": [
+      "fish"
+     ]
+    },
+    {
+     "name": "콩나물",
+     "tags": [
+      "soy"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "미더덕",
+     "tags": [
+      "shellfish"
+     ]
+    },
+    {
+     "name": "새우",
+     "tags": [
+      "shrimp"
+     ]
+    },
+    {
+     "name": "간장·전분 양념",
+     "tags": [
+      "wheat"
+     ]
+    }
+   ],
+   "variants": []
+  },
+  "삼계탕": {
+   "aliases": [],
+   "category": "탕",
+   "required": [
+    {
+     "name": "닭",
+     "tags": [
+      "chicken"
+     ]
+    },
+    {
+     "name": "찹쌀",
+     "tags": []
+    }
+   ],
+   "hidden": [
+    {
+     "name": "잣",
+     "tags": [
+      "pine_nut"
+     ]
+    },
+    {
+     "name": "술(인삼주 등)",
+     "tags": [
+      "alcohol"
+     ]
+    }
+   ],
+   "variants": []
+  },
+  "불고기": {
+   "aliases": [],
+   "category": "고기",
+   "required": [
+    {
+     "name": "소고기",
+     "tags": [
+      "beef"
+     ]
+    },
+    {
+     "name": "간장",
+     "tags": [
+      "soy",
+      "wheat"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "맛술",
+     "tags": [
+      "alcohol"
+     ]
+    },
+    {
+     "name": "참기름",
+     "tags": [
+      "sesame"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "name": "돼지불고기",
+     "keywords": [
+      "돼지"
+     ],
+     "ingredients": [
+      {
+       "name": "돼지고기",
+       "tags": [
+        "pork"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "제육볶음": {
+   "aliases": [
+    "제육"
+   ],
+   "category": "고기",
+   "required": [
+    {
+     "name": "돼지고기",
+     "tags": [
+      "pork"
+     ]
+    },
+    {
+     "name": "고추장",
+     "tags": [
+      "wheat",
+      "soy"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "맛술",
+     "tags": [
+      "alcohol"
+     ]
+    },
+    {
+     "name": "참기름",
+     "tags": [
+      "sesame"
+     ]
+    }
+   ],
+   "variants": []
+  },
+  "순대": {
+   "aliases": [],
+   "category": "분식",
+   "required": [
+    {
+     "name": "돼지 창자·선지",
+     "tags": [
+      "pork"
+     ]
+    },
+    {
+     "name": "당면",
+     "tags": []
+    }
+   ],
+   "hidden": [
+    {
+     "name": "밀가루",
+     "tags": [
+      "wheat"
+     ]
+    }
+   ],
+   "variants": []
+  },
+  "냉면": {
+   "aliases": [],
+   "category": "면",
+   "required": [
+    {
+     "name": "메밀·전분 면",
+     "tags": [
+      "buckwheat"
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "name": "밀가루",
+     "tags": [
+      "wheat"
+     ]
+    },
+    {
+     "name": "소고기 육수",
+     "tags": [
+      "beef"
+     ]
+    },
+    {
+     "name": "삶은 달걀",
+     "tags": [
+      "egg"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "name": "물냉면",
+     "keywords": [
+      "물"
+     ],
+     "ingredients": []
+    },
+    {
+     "name": "비빔냉면",
+     "keywords": [
+      "비빔"
+     ],
+     "ingredients": [
+      {
+       "name": "고추장 양념",
+       "tags": [
+        "wheat",
+        "soy"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "회냉면",
+     "keywords": [
+      "회"
+     ],
+     "ingredients": [
+      {
+       "name": "가자미회",
+       "tags": [
+        "fish"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -4,6 +4,10 @@
 
 ## 실행 방법
 
+**Windows: `run.bat` 더블클릭** (가상환경·설치·.env 생성·서버 실행 자동) / 맥: `./run.sh`
+
+수동 실행:
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
@@ -31,9 +35,20 @@ app/
 ├── db/
 │   └── supabase_client.py   # Supabase 클라이언트 초기화
 ├── routers/
-│   ├── ocr.py       # POST /ocr - 메뉴판 이미지 텍스트 추출 (Groq Vision)
-│   └── analyze.py   # POST /analyze - 성분 분석 및 위험도 판정 (Groq LLM)
-└── models/          # 데이터 모델 (예정)
+│   ├── ocr.py           # POST /ocr - 메뉴판 이미지 → 메뉴 목록 (Groq Vision)
+│   ├── analyze.py       # POST /analyze - 재료·비율 추론 + 규칙 기반 위험도
+│   ├── qna.py           # POST /qna, /qna/confirm - 질의응답, 직원 답변 반영
+│   ├── stt.py           # POST /stt - 음성 → 텍스트 (Groq Whisper)
+│   └── profile_card.py  # GET /profile/card - 종업원에게 보여줄 식단 카드
+├── services/
+│   ├── menu_knowledge.py  # 메뉴 기준 DB 매칭 (필수/숨은/변형 재료)
+│   ├── dietary_rules.py   # 위험도 규칙 + 직원 질문 생성
+│   ├── taxonomy.py        # 성분 태그·알레르기 매핑·다국어 라벨
+│   ├── analysis_service.py
+│   └── groq_service.py    # 재시도·JSON 파싱
+├── data/menu_base.json    # 부산/한식 메뉴 기준 데이터 (팀 검수 필요)
+├── core/ (config, auth)
+└── models/schemas.py
 
 supabase/
 └── migrations/      # DB 스키마 및 RLS 정책 SQL 스크립트
@@ -58,14 +73,18 @@ supabase/
 - **Redirect URL 등록 확인**: Supabase Authentication > URL Configuration의 Site URL / Redirect URLs에 로컬 개발 주소(`http://localhost:5173/**`)가 등록되어 있어야 로그인 후 리다이렉트가 정상 작동
 - **Google OAuth Client의 Authorized redirect URIs**: Google Cloud Console의 Client 설정에 Supabase 콜백 URL(`https://<project-ref>.supabase.co/auth/v1/callback`)이 등록되어 있어야 함
 
-## 알려진 이슈 (팀 확인 필요)
+## 알려진 이슈
 
-`app/routers/analyze.py`가 참조하는 필드명이 실제 DB 컬럼명과 일치하지 않습니다. 병합/사용 전 아래 불일치를 해결해야 합니다.
+~~`app/routers/analyze.py` 필드명 불일치~~ → `feat/analyze-v2`에서 해결 (profiles는 `user_id`로 조회, scan_logs는 `profile_id`·`raw_ocr_text`·`analysis_result`로 저장).
 
-| 위치 | 현재 코드가 참조하는 필드 | 실제 컬럼명 |
-|---|---|---|
-| profiles 조회 | `religion` | `religious_diet` |
-| profiles 조회 | `diet` | `vegetarian_type` |
-| scan_logs 저장 | `menu_name` | 없음 (raw_ocr_text로 대체 또는 삭제) |
-| scan_logs 저장 | `result` | `analysis_result` |
-| scan_logs 저장 | 없음 | `profile_id` (필수, FK) |
+- 저장소에 `venv/` 폴더(가상환경 바이너리)가 커밋되어 있음 → `git rm -r --cached venv` 필요
+- Groq `meta-llama/llama-4-scout-17b-16e-instruct`(2026-07-17), `llama-3.3-70b-versatile`(2026-08-16) 서비스 종료 → 모델명은 `.env`로 관리
+
+## 테스트
+
+```bash
+pip install -r requirements-dev.txt
+pytest -q
+```
+
+API 상세는 `docs/API.md`, 피드백 반영 내역은 `docs/FEEDBACK_RESPONSE.md` 참고.
